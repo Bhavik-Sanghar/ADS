@@ -16,7 +16,7 @@ public class Practical1_3 {
 
         try {
             // Step 1: Read numbers from a file
-            File file = new File("/Users/bhavik/Downloads/numbers.txt");
+            File file = new File("Practical-1\\numbers.txt");
             Scanner sc = new Scanner(file);
 
             int linearCollisions = 0;

@@ -25,7 +25,6 @@ def evenOccurrences(count_dict):
     return evenCount
 
 
-
 arr = ["c#", "sql", "php", "php", "sql", "sql"]
 temp = count_occurrences(arr)
 result = oddOccurrences(temp)
