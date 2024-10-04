@@ -17,8 +17,19 @@ def oddOccurrences(count_dict):
             oddCount[key] = value
     return oddCount
 
+def evenOccurrences(count_dict):
+    evenCount = {}
+    for key , value in count_dict.items():
+        if value % 2 == 0:
+            evenCount[key] = value
+    return evenCount
+
+
 
 arr = ["c#", "sql", "php", "php", "sql", "sql"]
 temp = count_occurrences(arr)
 result = oddOccurrences(temp)
 print(result)
+
+result_even = evenOccurrences(temp)
+print(result_even)
