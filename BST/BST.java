@@ -1,99 +1,92 @@
 package BST;
 
-//Binary Search Tree
+//Write a program which creates Binary Search Tree. 
 
-class Node{
-    int key;
+class Node {
+    int data;
     Node left, right;
 
-    public Node(int item){
-        key = item;
+    Node(int data) {
+        this.data = data;
         left = right = null;
     }
 }
 
-class BinaryTree{
+class BinarySearchTree {
     Node root;
 
-    public BinaryTree(){
+    BinarySearchTree() {
         root = null;
     }
 
-    void insert(int key) {
-        root = insertRec(root, key);
+    void insert(int data) {
+        root = insertRec(root, data);
     }
 
-    Node insertRec(Node root, int key){
-        if(root == null){
-            root = new Node(key);
+    Node insertRec(Node root, int data) {
+        if (root == null) {
+            root = new Node(data);
             return root;
         }
 
-        if(key < root.key)
-            root.left = insertRec(root.left, key);
-        else if(key > root.key)
-            root.right = insertRec(root.right, key);
+        if (data < root.data) {
+            root.left = insertRec(root.left, data);
+        } else if (data > root.data) {
+            root.right = insertRec(root.right, data);
+        }
 
         return root;
     }
 
-    boolean search(int key) {
-        return searchRec(root, key);
-    }
-
-    boolean searchRec(Node root, int key){
-        if(root == null)
-            return false;
-        if(root.key == key)
-            return true;
-        else if(key < root.key)
-            return searchRec(root.left, key);
-        else
-            return searchRec(root.right, key);
-    }
-
-    void inorder() {
-        inorderRec(root);
-    }
-
-    void inorderRec(Node root){
-        if(root != null){
-            inorderRec(root.left);
-            System.out.print(root.key + " , ");
-            inorderRec(root.right);
+    void inorderTraversal(Node root) {
+        if (root != null) {
+            inorderTraversal(root.left);
+            System.out.print(root.data + " ");
+            inorderTraversal(root.right);
         }
     }
 
-}
-
-
-class BST {
-    public static void main(String[] args) {
-        BinaryTree bst = new BinaryTree();
-        /* Let us create the following BST
-                  50
-               /     \
-              30      70
-             /  \    /  \
-           20   40  60   80 
-        */
-
-        bst.insert(50);
-        bst.insert(30);
-        bst.insert(20);
-        bst.insert(40);
-        bst.insert(70);
-        bst.insert(60);
-        bst.insert(80);
-
-        // Print inorder traversal of the BST 
-        System.out.println("Inorder traversal of the BST:");
-        bst.inorder();
-        System.out.println();
-
-         // Search for a key
-         System.out.println("Search for 40: " + bst.search(40));
-         System.out.println("Search for 100: " + bst.search(100));
+    void preorderTraversal(Node root) {
+        if (root != null) {
+            System.out.print(root.data + " ");
+            preorderTraversal(root.left);
+            preorderTraversal(root.right);
+        }
     }
 
+    void postorderTraversal(Node root) {
+        if (root != null) {
+            postorderTraversal(root.left);
+            postorderTraversal(root.right);
+            System.out.print(root.data + " ");
+        }
+    }
+}
+
+public class BST{
+
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+
+        System.out.println("Inorder traversal of the binary search tree:");
+        tree.inorderTraversal(tree.root);
+        System.out.println();
+
+        System.out.println("Preorder traversal of the binary search tree:");
+        tree.preorderTraversal(tree.root);
+        System.out.println();
+
+        System.out.println("Postorder traversal of the binary search tree:");
+        tree.postorderTraversal(tree.root);
+        System.out.println();
+
+    }
 }
